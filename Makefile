@@ -1,7 +1,7 @@
 .PHONY: all
 
 CFLAGS=-Wall
-LDFLAGS=-lssl
+LDFLAGS=-lssl -lcrypto
 DEBUG=-O0 -ggdb
 CC=g++
 
@@ -10,7 +10,7 @@ all: proxys
 OBJ=IOSelect.o IOSocket.o IOSocketSSL.o
 
 proxys: proxys.o $(OBJ)
-	$(CC) $(LDFLAGS) $^ -o $@
+	$(CC)  $^ -o $@ $(LDFLAGS)
 
 .cpp.o:
 	$(CC) $(DEBUG) $(CFLAGS) -c $<
